@@ -16,6 +16,7 @@ import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
+import retrofit.RetrofitError;
 
 /***
  * Representation of a field chart in a ThingSpeak Channel using the HelloCharts for Android library.
@@ -200,6 +201,11 @@ public class ThingSpeakLineChart implements ThingSpeakChannel.ChannelFieldFeedUp
         if (mListener != null) {
             mListener.onChartDataUpdated(mChannel.getChannelId(), mFieldId, mTitle, mLineChartData, maxViewport, defaultViewport);
         }
+    }
+
+    @Override
+    public void onFailure(RetrofitError error) {
+
     }
 
     /***

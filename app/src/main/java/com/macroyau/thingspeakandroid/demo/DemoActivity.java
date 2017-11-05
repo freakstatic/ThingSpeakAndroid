@@ -15,6 +15,7 @@ import java.util.Date;
 import lecho.lib.hellocharts.model.LineChartData;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
+import retrofit.RetrofitError;
 
 public class DemoActivity extends ActionBarActivity {
 
@@ -39,6 +40,11 @@ public class DemoActivity extends ActionBarActivity {
                 // Notify last update time of the Channel feed through a Toast message
                 Date lastUpdate = channelFeed.getChannel().getUpdatedAt();
                 Toast.makeText(DemoActivity.this, lastUpdate.toString(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(RetrofitError error) {
+
             }
         });
         // Fetch the specific Channel feed
