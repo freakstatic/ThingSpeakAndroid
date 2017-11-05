@@ -39,7 +39,7 @@ public class ThingSpeakChannel {
          * @param channelFeed The specific Channel feed.
          */
         void onChannelFeedUpdated(long channelId, String channelName, ChannelFeed channelFeed);
-
+        void onFailure(RetrofitError error);
     }
 
     /***
@@ -71,7 +71,7 @@ public class ThingSpeakChannel {
          * @param channelFieldFeed The Channel field feed.
          */
         void onChannelFieldFeedUpdated(long channelId, int fieldId, ChannelFeed channelFieldFeed);
-
+        void onFailure(RetrofitError error);
     }
 
     /***
@@ -314,7 +314,7 @@ public class ThingSpeakChannel {
 
             @Override
             public void failure(RetrofitError error) {
-
+                mChannelFeedUpdateListener.onFailure(error);
             }
         });
     }
