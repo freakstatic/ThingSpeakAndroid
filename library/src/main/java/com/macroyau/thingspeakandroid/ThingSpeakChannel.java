@@ -55,7 +55,7 @@ public class ThingSpeakChannel {
          * @param feed The feed entry.
          */
         void onFeedUpdated(long channelId, long entryId, Feed feed);
-
+        void onFailure(RetrofitError error);
     }
 
     /***
@@ -86,6 +86,7 @@ public class ThingSpeakChannel {
          * @param statusUpdates The status updates.
          */
         void onChannelStatusUpdated(long channelId, StatusUpdates statusUpdates);
+        void onFailure(RetrofitError error);
 
     }
 
@@ -333,7 +334,7 @@ public class ThingSpeakChannel {
 
             @Override
             public void failure(RetrofitError error) {
-
+                mFeedUpdateListener.onFailure(error);
             }
         });
     }
@@ -354,7 +355,7 @@ public class ThingSpeakChannel {
 
             @Override
             public void failure(RetrofitError error) {
-
+                mFeedUpdateListener.onFailure(error);
             }
         });
     }
@@ -378,7 +379,7 @@ public class ThingSpeakChannel {
 
             @Override
             public void failure(RetrofitError error) {
-
+                mChannelFieldFeedUpdateListener.onFailure(error);
             }
         });
     }
@@ -397,7 +398,7 @@ public class ThingSpeakChannel {
 
             @Override
             public void failure(RetrofitError error) {
-
+                mChannelStatusUpdateListener.onFailure(error);
             }
         });
     }
